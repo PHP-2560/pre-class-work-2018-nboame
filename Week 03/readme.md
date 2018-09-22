@@ -1,8 +1,7 @@
-pre-class
-This folder will be where you complete your pre-class each week. The first time you access this through github classroom, you will make a private individual git repository for yourself. Then each week you will add a folder in here for the new pre-class work.
+This week's pre-class assignment will use the gapminder dataset.
 
-Before you continue, Edit this document with:
+Gapminder is a cleaned up version from Gapminder Data. 
 
-Preferred Name: NANA
-Brown Name: NANA AKOSUA FRIMPOMAA BOAME
-Brown E-mail: NANA_BOAME@BROWN.EDU
+Gapminder contains a lot of great data on all of the nations of the world. 
+
+Begin by installing the gapminder package in R.
