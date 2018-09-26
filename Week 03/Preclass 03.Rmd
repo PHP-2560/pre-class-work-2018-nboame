@@ -30,7 +30,7 @@ gapminder %>%
   group_by(continent) %>% #group countries by continent
   summarise(Unique_Countries = n_distinct(country)) #count the number of countries by continent
 ```
-    Africa, the Americas, Asia, Europe and Oceania have 52, 25, 33, 30 and 2 countries, respectively.
+  Africa, the Americas, Asia, Europe and Oceania have 52, 25, 33, 30 and 2 countries, respectively.
 
 
 Which European nation had the lowest GDP per capita in 1997?
@@ -48,12 +48,12 @@ gapminder %>%
   group_by(continent) %>% #then group by continent
   summarise(mean_LifeExp = mean(lifeExp)) #then calculate the mean life expectancy
 ```
-  The average life expectancy (in years) across each continent in the 1980s is as follows:
-    Africa    52.5
-    Americas  67.2
-    Asia      63.7
-    Europe    73.2
-    Oceania   74.8
+ The average life expectancy (in years) across each continent in the 1980s is as follows:
+   Africa    52.5
+   Americas  67.2
+   Asia      63.7
+   Europe    73.2
+   Oceania   74.8
 
 What 5 countries have the highest total GDP over all years combined?
 ```{r}
@@ -61,9 +61,8 @@ gapminder %>%
   group_by(country) %>% #group by country
   summarise(Total_GDP = sum(gdpPercap)) %>% #then calculate total GDP
   arrange(by = desc(Total_GDP)) #then order by descending total GDP
-
 ```
-    The 5 countries with the highest total GDP over all years combined are 1) Kuwait, 2) Switzerland, 3) Norway, 4) United States and 5) Canada. 
+  The 5 countries with the highest total GDP over all years combined are 1) Kuwait, 2) Switzerland, 3) Norway, 4) United States and 5) Canada. 
 
 What countries and years had life expectancies of at least 80 years? N.b. only output the columns of interest: country, life expectancy and year (in that order).
 ```{r}
@@ -88,23 +87,36 @@ gapminder %>%
 
 What 10 countries have the strongest correlation (in either direction) between life expectancy and per capita GDP?
 ```{r}
-
+gapminder %>%
+  #couldn't seem to figure out which correlation function to use...
 ```
-
-
 Which combinations of continent (besides Asia) and year have the highest average population across all countries? N.b. your output should include all results sorted by highest average population. With what you already know, this one may stump you. See this Q&A for how to ungroup before arrangeing. This also behaves differently in more recent versions of dplyr.
 ```{r}
-
+gapminder %>% #couldn't quite figure this one out
+  filter(continent != "Asia") %>%
+  group_by(country) %>%
+  summarise(Avgpop = mean(pop)) %>%
+  arrange(by = desc(Avgpop))
 ```
-
+  The Americas, specifically the United States and Brazil, consistently have the highest population
 
 Which three countries have had the most consistent population estimates (i.e. lowest standard deviation) across the years of available data?
 ```{r}
-
+gapminder %>%
+  group_by(country) %>% #group by country
+  summarise(pop_SD = (sd(pop))) %>% #calculate standard deviation of population for each country
+  arrange(by = pop_SD) #order standard deviation from smallest to largest
 ```
-
+    The three countries with the most consistent population estimates are 1) Sao Tome and Principe, 2) Iceland, and 3) Montenegro.
 
 Subset gm to only include observations from 1992 and store the results as gm1992. What kind of object is this?
+```{r}
+gm1992 = gapminder %>% #set dataframe gm1992 equal to gapminder
+  filter(year == 1992) #then include ony=ly observations from 1992
+```
+
+  GM1992 is a dataframe.
+
 Which observations indicate that the population of a country has decreased from the previous year and the life expectancy has increased from the previous year? See the vignette on window functions.
 ```{r}
 
