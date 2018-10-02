@@ -54,17 +54,31 @@ survey <- data.frame(
                      "q4" = c(-30, 5, 2, 23, 4, 2),
                      "q5" = c(88, 4, -20, 2, 4, 2)
                      )
+survey
 ```
 
 The response to each question should be an integer between 1 and 5. Obviously, we have some bad values in the dataframe. The goal of this problem is to fix them.
 
 A. Using a loop, create a new dataframe called survey.clean where all the invalid values (those that are not integers between 1 and 5) are set to NA.
 ```{r}
-
+survey.clean = survey #set survey.clean to equal survey
+for (i in 2:ncol(survey.clean)){  #will assess by column
+  x = survey.clean[, i]  #create reference x which corresponds to each column in survey.clean
+  x[(x %in% c(1:5)) == F] = NA  #for all values of x, if x is not between 1 and 5, replace with NA
+  survey.clean[, i] = x  #set the columns of survey.clean to be equal to the columns of x
+}
+survey.clean  #view cleaned version of survey.clean
 ```
 
 B. Now, again using a loop, add a new column to the dataframe called "invalid.answers" that indicates, for each participant, how many bad answers they gave.
 ```{r}
-
+survey.clean %>%   #take dataset survey.clean 
+  mutate(invalid.answers = rep(NA, nrow(survey.clean)))  #then create variable invalid.answers    
+for (i in 1:nrow(survey.clean)){  #create a loop that will assess each row of the dataset
+  y = survey.clean[i,1:ncol(survey.clean)-1]  #the data from the row is assigned to y
+  x = is.na(y)  #calculate the number of NAs in y and assign to x
+  survey.clean$invalid.answers[i] = sum(x)  #assign the sum of x to the newly created variable
+}
+survey.clean  #view the updated dataset
 ```
 
