@@ -19,17 +19,28 @@ for (x in 1:50){print(x)} #a loop that prints integers from 1 to 50
 Question 2:
 A. Using a loop, add all the integers between 0 and 1000.
 ```{r}
-
+my_sum = 0
+for (i in 0:1000){
+  my_sum = my_sum + i
+}
+my_sum
 ```
 
 B. Now, add all the EVEN integers between 0 and 1000 (hint: use seq())
 ```{r}
-
+even = seq(2,1000, 2)
+my_sum = 0
+for (i in even){
+  my_sum = my_sum + i
+}
+my_sum
 ```
 
 C. Now, repeat A and B WITHOUT using a loop.
 ```{r}
+1000*(1000+1)/2 #add all the integers between 0 amd 1000 without using a loop
 
+1000*(1000+2)/4 #add all the even integers between 0 and 1000 without using a loop
 ```
 
 Question 3:
