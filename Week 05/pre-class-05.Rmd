@@ -1,4 +1,5 @@
-# pre-class
+# pre-class - 10 Oct 2018
+# Nana Boame
 
 
 Make sure you commit this often with meaningful messages. 
@@ -91,20 +92,46 @@ bmi     Body Mass Index
 -----------------------------------------------------------
 
 
-
-
 ### Question 1: Standardize Function
 
-A. Create a function called standardize.me() that takes a numeric vector as an argument, and returns the standardized version of the vector. 
-B. Assign all the numeric columns of the original WCGS dataset to a new dataset called WCGS.new.
-C. Using a loop and your new function, standardize all the variables WCGS.new dataset.
-D. What should the mean and standard deviation of all your new standardized variables be? Test your prediction by running a loop
+A. Create a function called standardize.me() that takes a numeric vector as an argument, and returns the standardized version of the vector.
+```{r}
+#create a function that returns the standardized version of a numeric vector
+standardize.me = function(x) {
+  output = (x - mean(x)) / sd(x)
+  return(output)
+}
+```
 
+B. Assign all the numeric columns of the original WCGS dataset to a new dataset called WCGS.new.
+```{r}
+# using the dplyr package, select the columns that are numeric
+library("dplyr")
+WCGS.new = select_if(wcgs, is.numeric)
+```
+
+C. Using a loop and your new function, standardize all the variables WCGS.new dataset.
+```{r}
+
+```
+
+D. What should the mean and standard deviation of all your new standardized variables be? Test your prediction by running a loop
+```{r}
+
+```
 
 
 
 ### Question 2: Looping to Calculate
 
 A. Using a loop, calculate the mean weight of the subjects separated by the type of CHD they have.
-B. Now do the same thing, but now don’t use a loop
+```{r}
+
+```
+
+B. Now do the same thing, but now don't use a loop
+```{r}
+
+```
+
 
