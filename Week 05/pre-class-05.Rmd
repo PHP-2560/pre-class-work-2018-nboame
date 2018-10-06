@@ -112,12 +112,25 @@ WCGS.new = select_if(wcgs, is.numeric)
 
 C. Using a loop and your new function, standardize all the variables WCGS.new dataset.
 ```{r}
-
+# standardize the columns of WCGS.new
+for(i in 1:ncol(WCGS.new)){
+  WCGS.new[,i] = standardize.me(WCGS.new[,i])
+}
 ```
 
 D. What should the mean and standard deviation of all your new standardized variables be? Test your prediction by running a loop
 ```{r}
+# I predict that the mean and standard deviation of all the new standardized variables should be 0 and 1, respectively. 
 
+# This loop will print the mean and standard deviation of each column.
+for(i in 1:ncol(WCGS.new)) {
+ print(paste("The mean of column ", i, " is ", round(mean(WCGS.new[,i]), 2), 
+             " and the standard deviation is ",
+             round(sd(WCGS.new[,i]), 2), sep = ""))
+}
+
+
+# For some reason, the mean and SD of column 7 is being output as NA. Unsure why this is happening given that there are no missing values..
 ```
 
 
