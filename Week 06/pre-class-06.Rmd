@@ -24,13 +24,24 @@ remove_last <- function(x) {
   x[-length(x)]
 }
 
-# Thi function repeats 'y' for each element of 'x'
+# This function repeats 'y' for each element of 'x'
 repeat_y <- function(x, y) {
   rep(y, length.out = length(x))
 }
 ```
 
 2. Compare and contrast rnorm() and MASS::mvrnorm(). How could you make them more consistent?
+```{r}
+?rnorm
+?MASS::mvrnorm
+
+# rnorm takes samples from the univariate normal distribution. The arguments for this function are n, mean and sd.
+
+# MASS::mvrnorm samples from the multivariate normal distribution. The arguments for this function are n, mu and Sigma.
+
+# These functions could be made consistent by using the same names for the arguments although I'm not completely sure that would be appropriate as sd and sigma are not interchangeable.
+```
+
 
 
 3. Use `lapply()` and an anonymous function to find the coefficient of variation (the standard deviation divided by the mean) for all columns in the mtcars dataset. 
